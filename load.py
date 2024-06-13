@@ -3,50 +3,50 @@ import cv2
 from PIL import Image
 import numpy as np
 
-# 
-data=[]
-labels=[]
-# 
-# ----------------
-# LABELS
-# Rote 0
-# Sumba 1
-# Sabu 2
-# ----------------
+# Inisialisasi list untuk menyimpan data citra dan labelnya
+data = []
+labels = []
 
-# rote 0
+# Mendefinisikan label untuk setiap kategori
+# Rote: 0
+# Sumba: 1
+# Sabu: 2
+
+# Memproses citra untuk kategori Rote (0)
 rotes = os.listdir(os.getcwd() + "/CNN/train/rote")
 for x in rotes:
-    imag=cv2.imread(os.getcwd() + "/CNN/train/rote/" + x)
+    imag = cv2.imread(os.getcwd() + "/CNN/train/rote/" + x)
     img_from_ar = Image.fromarray(imag, 'RGB')
     resized_image = img_from_ar.resize((50, 50))
-    data.append(np.array(resized_image))
-    labels.append(0)
+    data.append(np.array(resized_image))  # Menambahkan citra yang telah diubah ukurannya ke dalam list data
+    labels.append(0)  # Menambahkan label kategori 'Rote' (0) ke dalam list labels
 
-# sumba 1
+# Memproses citra untuk kategori Sumba (1)
 sumbas = os.listdir(os.getcwd() + "/CNN/train/sumba/")
 for x in sumbas:
-    imag=cv2.imread(os.getcwd() + "/CNN/train/sumba/" + x)
+    imag = cv2.imread(os.getcwd() + "/CNN/train/sumba/" + x)
     img_from_ar = Image.fromarray(imag, 'RGB')
     resized_image = img_from_ar.resize((50, 50))
-    data.append(np.array(resized_image))
-    labels.append(1)
+    data.append(np.array(resized_image))  # Menambahkan citra yang telah diubah ukurannya ke dalam list data
+    labels.append(1)  # Menambahkan label kategori 'Sumba' (1) ke dalam list labels
 
-# sabu 2
+# Memproses citra untuk kategori Sabu (2)
 sabus = os.listdir(os.getcwd() + "/CNN/train/sabu/")
 for x in sabus:
-    imag=cv2.imread(os.getcwd() + "/CNN/train/sabu/" + x)
+    imag = cv2.imread(os.getcwd() + "/CNN/train/sabu/" + x)
     img_from_ar = Image.fromarray(imag, 'RGB')
     resized_image = img_from_ar.resize((50, 50))
-    data.append(np.array(resized_image))
-    labels.append(2)
+    data.append(np.array(resized_image))  # Menambahkan citra yang telah diubah ukurannya ke dalam list data
+    labels.append(2)  # Menambahkan label kategori 'Sabu' (2) ke dalam list labels
 
-tribes=np.array(data)
-labels=np.array(labels)
+# Mengonversi list menjadi array NumPy
+tribes = np.array(data)
+labels = np.array(labels)
 
-# 
-np.save("tribes",tribes)
-np.save("labels",labels)
+# Menyimpan array NumPy ke dalam file 'tribes.npy' dan 'labels.npy'
+np.save("tribes", tribes)
+np.save("labels", labels)
+
 
 
 
