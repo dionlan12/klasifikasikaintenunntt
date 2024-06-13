@@ -1,23 +1,58 @@
+
 import os
 import cv2
 from PIL import Image
 import numpy as np
+import keras
 
-import tensorflow as tf
-
-imag=cv2.imread(os.getcwd() +'/cnn/test/sumba.jpg')
+# Membaca gambar dari file 'sumba.jpg' menggunakan OpenCV
+imag = cv2.imread(os.getcwd() + '/cnn/test/sumba.jpg')
+# Membuat objek gambar dari array NumPy yang dibaca sebelumnya
 img_from_ar = Image.fromarray(imag, 'RGB')
+# Menyesuaikan ukuran gambar menjadi 50x50 piksel
 resized_image = img_from_ar.resize((50, 50))
-
-test_image =np.expand_dims(resized_image, axis=0) 
-
-# load model
-model = tf.keras.models.load_model(os.getcwd() + '/model.h5')
-
-result = model.predict(test_image) 
-print(result) 
+# Menambahkan dimensi batch ke gambar yang telah diubah ukurannya
+test_image = np.expand_dims(resized_image, axis=0)
+# Memuat model neural network dari file 'model.h5' menggunakan Keras
+model = keras.models.load_model(os.getcwd() + '/model.h5')
+# Melakukan prediksi menggunakan model terhadap gambar yang telah diproses
+result = model.predict(test_image)
+# Mencetak hasil prediksi
+print(result)
+# Mencetak hasil prediksi secara spesifik
 print("Result is: ", result[0][0])
+# Mencetak prediksi kelas
 print("Prediction: " + str(np.argmax(result)))
+
+
+
+
+
+
+
+
+
+
+# import os
+# import cv2
+# from PIL import Image
+# import numpy as np
+
+# import tensorflow as tf
+
+# imag=cv2.imread(os.getcwd() +'/cnn/test/sumba.jpg')
+# img_from_ar = Image.fromarray(imag, 'RGB')
+# resized_image = img_from_ar.resize((50, 50))
+
+# test_image =np.expand_dims(resized_image, axis=0) 
+
+# # load model
+# model = tf.keras.models.load_model(os.getcwd() + '/model.h5')
+
+# result = model.predict(test_image) 
+# print(result) 
+# print("Result is: ", result[0][0])
+# print("Prediction: " + str(np.argmax(result)))
 
 
 # import os
