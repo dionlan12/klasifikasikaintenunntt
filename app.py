@@ -47,7 +47,7 @@ def predict():
     # Mendapatkan indeks kelas dengan nilai prediksi tertinggi
     predicted_class_index = np.argmax(result)
 
-    return jsonify({"Prediction": label_mapping[predicted_class_index]})
+    return jsonify({"Prediction": label_mapping[predicted_class_index], "Result": result[0][0]})
 
 if __name__ == '__main__':
     app.run(debug=True)

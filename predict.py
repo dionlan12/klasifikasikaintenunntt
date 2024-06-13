@@ -6,7 +6,7 @@ import numpy as np
 import keras
 
 # Membaca gambar dari file 'sumba.jpg' menggunakan OpenCV
-imag = cv2.imread(os.getcwd() + '/cnn/test/sumba.jpg')
+imag = cv2.imread(os.getcwd() + '/cnn/test/rote_atas_3.jpg')
 # Membuat objek gambar dari array NumPy yang dibaca sebelumnya
 img_from_ar = Image.fromarray(imag, 'RGB')
 # Menyesuaikan ukuran gambar menjadi 50x50 piksel
