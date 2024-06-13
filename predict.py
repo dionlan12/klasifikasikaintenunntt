@@ -26,13 +26,6 @@ print("Prediction: " + str(np.argmax(result)))
 
 
 
-
-
-
-
-
-
-
 # import os
 # import cv2
 # from PIL import Image
